@@ -3,23 +3,44 @@
 [node name="ControlPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 134.0
+offset_top = 19.0
+offset_right = 134.0
+offset_bottom = 19.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -129.0
+offset_top = -15.0
+offset_right = 168.0
+offset_bottom = 53.0
 
-[node name="Play" type="Button" parent="HBoxContainer"]
+[node name="AddUnitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add Unit"
+
+[node name="PlayButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="PauseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Pause"
+
+[node name="ResetButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="StopButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Stop"
+
+[node name="StartMatchButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Pause" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Reset" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="FF" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Rewind" type="Button" parent="HBoxContainer"]
-layout_mode = 2
+[node name="MatchStatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -120.0
+offset_top = 83.0
+offset_right = 165.0
+offset_bottom = 193.0

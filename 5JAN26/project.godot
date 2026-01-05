@@ -13,3 +13,12 @@ config_version=5
 config/name="AFL_Simulator"
 run/main_scene="uid://dtvr7d0uf0y2r"
 config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+Debug="*res://debug.gd"
+GameManager="*res://game_manager.gd"
+UIManager="*res://ui_manager.gd"
+UnitFactory="*res://unit_factory.gd"
+BallManager="*res://ball_manager.gd"
+MatchDirector="*res://match_director.gd"

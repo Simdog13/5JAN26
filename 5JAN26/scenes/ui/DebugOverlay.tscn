@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtlaugy4trgpu"]
+
+[ext_resource type="Script" uid="uid://bsje850b5he0u" path="res://scenes/ui/DebugOverlay.gd" id="1_ba1bw"]
+[ext_resource type="Script" uid="uid://l02xqs3nha34" path="res://scenes/ui/DebugDrawCanvas.gd" id="2_sakto"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_ba1bw")
+
+[node name="DrawCanvas" type="Node2D" parent="."]
+script = ExtResource("2_sakto")

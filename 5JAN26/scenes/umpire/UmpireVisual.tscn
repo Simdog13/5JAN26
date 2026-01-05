@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm54v1hvv5jfj"]
+
+[ext_resource type="Texture2D" uid="uid://bruf4madanfft" path="res://assets/Umpire.png" id="1_txywg"]
+[ext_resource type="Script" uid="uid://cyw2hp87qw4vr" path="res://umpire_visual.gd" id="2_8qqtb"]
+
+[node name="Umpire" type="Node2D"]
+
+[node name="UmpireVisual" type="Sprite2D" parent="."]
+texture = ExtResource("1_txywg")
+script = ExtResource("2_8qqtb")
