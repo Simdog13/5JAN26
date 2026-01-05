@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cal07jl611gwn"]
+
+[ext_resource type="PackedScene" uid="uid://dv601o3htvky6" path="res://scenes/units/UnitVisualizer.tscn" id="1_rvslj"]
+[ext_resource type="PackedScene" uid="uid://ce1n4ompvua1h" path="res://scenes/board/AFL_Grid.tscn" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://dgj1vmy57c2qc" path="res://scripts/game/GameController.gd" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://hprcaifwv28q" path="res://AFL_Grid.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://cy3ql8wxbucdo" path="res://scenes/ui/ControlPanel.tscn" id="5_vcsgt"]
+
+[node name="Main" type="Node2D"]
+
+[node name="UnitVisualizer" parent="." groups=["units"] instance=ExtResource("1_rvslj")]
+unit_name = null
+team = null
+player_position = null
+consciousness = null
+stamina = null
+speed_base = null
+kick_accuracy = null
+marking = null
+leap = null
+hands = null
+iq = null
+physical_build = null
+stress = null
+current_stamina = null
+current_speed = null
+hex_position = null
+
+[node name="AFL_Grid" parent="." instance=ExtResource("2_0bbpv")]
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("3_0bbpv")
+
+[node name="AFL_Grid2" parent="." instance=ExtResource("4_rarhs")]
+
+[node name="ControlPanel" parent="." instance=ExtResource("5_vcsgt")]
+offset_left = 29.0
+offset_top = 58.0
+offset_right = 89.0
+offset_bottom = 101.0

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cy3ql8wxbucdo"]
+
+[node name="ControlPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Pause" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="FF" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Rewind" type="Button" parent="HBoxContainer"]
+layout_mode = 2
