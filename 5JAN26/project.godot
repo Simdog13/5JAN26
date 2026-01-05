@@ -11,5 +11,5 @@ config_version=5
 [application]
 
 config/name="AFL_Simulator"
-run/main_scene="uid://cal07jl611gwn"
+run/main_scene="uid://dtvr7d0uf0y2r"
 config/features=PackedStringArray("4.5", "Forward Plus")

@@ -4,14 +4,15 @@ extends Node
 enum GameState { STOPPED, PLAYING, PAUSED, FAST_FORWARD, REWIND }
 var current_state = GameState.STOPPED
 var game_speed = 1.0
+var current_turn = 0
 
 # Game recording for rewind
 var game_history = []
-var current_turn = 0
 
+@onready var grid = get_node("AFL_Grid")
+@onready var control_panel = get_node("ControlPanel")
+@onready var ball = null # We'll add this later
 @onready var units = get_tree().get_nodes_in_group("units")
-@onready var ball = null
-@onready var grid = get_parent().get_node("AFL_Grid")
 
 func _ready():
 	print("=== AFL Simulator Starting ===")
@@ -29,7 +30,38 @@ func _ready():
 
 	for unit in units_found:
 		print("  - ", unit.unit_name)
+		
+		# Connect the Add Unit button signal to a function in this controller
+	var add_unit_button = get_node("ControlPanel/AddUnitButton")
+	if add_unit_button:
+		add_unit_button.pressed.connect(_on_add_unit_pressed)
+	else:
+		print("Warning: AddUnitButton not found. Check node name and path.")
 	reset_game()
+
+func _on_add_unit_pressed():
+	print("Add Unit button pressed!") # Good for debugging
+	
+	# 1. Load the unit scene
+	var unit_scene = preload("res://scenes/units/UnitVisualizer.tscn")
+	# 2. Create an instance (a new unit) from it
+	var new_unit = unit_scene.instantiate()
+	
+	# 3. Add it as a child of the Main scene so it appears
+	get_parent().add_child(new_unit)
+	
+	# 4. Configure the new unit
+	new_unit.unit_name = "TestPlayer"
+	new_unit.team = 0
+	new_unit.player_position = "Midfielder"
+	
+	# 5. Try to place it on the grid at a specific position
+	var grid_x = 20 # Example: somewhere near the center (adjust for your grid size)
+	var grid_y = 10
+	if grid.place_unit(new_unit, grid_x, grid_y):
+		print("Successfully placed unit at grid (", grid_x, ", ", grid_y, ")")
+	else:
+		print("Failed to place unit.")
 
 func _process(delta):
 	match current_state:

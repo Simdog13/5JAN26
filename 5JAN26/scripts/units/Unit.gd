@@ -3,8 +3,6 @@ extends Node2D
 
 class_name AFLPlayerUnit
 
-@onready var grid = get_node("/root/Main/AFL_Grid")
-
 # === EDITABLE STATS (Visible in Inspector) ===
 @export_category("Unit Identity")
 @export var unit_name : String = "Player"
@@ -32,23 +30,12 @@ class_name AFLPlayerUnit
 enum MovementState { STANDING, WALKING, JOGGING, RUNNING, SPRINTING }
 var movement_state : MovementState = MovementState.STANDING
 
-func _ready():
-	add_to_group("units")
-	print("Unit added to group:", unit_name)
-	
-	# Wait for grid to be ready
-	await get_tree().process_frame
-	
-	if grid:
-		var world_pos = grid.hex_to_pixel(hex position)
-		position = world_pos
-		print(unit_name, "positioned at hex:", hex_position, " pixel:", world_pos)
-		
 # === REAL-TIME UPDATES ===
-#func _process(delta):
-#		# Unit is unconscious
-#		modulate = Color(0.5, 0.5, 0.5, 0.5)
-#		return
+func _process(delta):
+	if consciousness <= 0:
+		# Unit is unconscious
+		modulate = Color(0.5, 0.5, 0.5, 0.5)
+		return
 	
 	# Stamina recovery/depletion
 	match movement_state:
@@ -68,11 +55,6 @@ func _ready():
 	var stress_factor = 1.0 - (stress / 200.0)  # Stress reduces speed
 	current_speed = speed_base * stamina_factor * stress_factor
 	
-	# Update position
-	if grid: # Need to get grid reference
-		var world_pos = grid.hex_to_pixel(hex_position)
-		position = world_pos
-	
 	# Visual feedback
 	update_visuals()
 
@@ -86,7 +68,7 @@ func update_visuals():
 	$Sprite2D.scale = Vector2(scale_factor, scale_factor)
 
 # === ACTION SYSTEM (D20 BASED) ===
-func attempt_kick(_target_hex, distance):
+func attempt_kick(target_hex, distance):
 	if consciousness <= 0 or current_stamina < 10:
 		return false
 	
